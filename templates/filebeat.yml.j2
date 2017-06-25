@@ -1,0 +1,11 @@
+filebeat.prospectors:
+- input_type: log
+  paths:
+    - /var/log/*.log
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+
+output.logstash:
+  hosts: ["localhost:5044"]
+

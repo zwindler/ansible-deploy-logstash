@@ -1,0 +1,28 @@
+---
+- name: Add Logstash repository
+  yum_repository:
+    name: logstash-5.x
+    description: Logstash repository for 5.x packages
+    baseurl: https://artifacts.elastic.co/packages/5.x/yum
+    gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+- name: Add Elasticsearch key to keystore
+  rpm_key:
+    state: present
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+- name: Install Logstash 
+  yum:
+    name: logstash
+    state: latest
+- name: Configure local log filebeat configuration to test
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+- name: Configure local log collection in logstash from filebeat
+  template: 
+    src: local_logs.conf.j2
+    dest: /etc/logstash/conf.d/local_logs.conf
+- name: restart filebeat and logstash
+  service: name={{ item }}  state=restarted enabled=yes
+  with_items:
+    - filebeat
+    - logstash
