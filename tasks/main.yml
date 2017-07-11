@@ -13,13 +13,3 @@
   yum:
     name: logstash
     state: latest
-- name: Configure local log filebeat configuration to test
-  template:
-    src: filebeat.yml.j2
-    dest: /etc/filebeat/filebeat.yml
-  notify: "notify filebeat for restart"
-- name: Configure local log collection in logstash from filebeat
-  template: 
-    src: local_logs.conf.j2
-    dest: /etc/logstash/conf.d/local_logs.conf
-  notify: "notify logstash for restart"
