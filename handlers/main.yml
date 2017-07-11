@@ -1,6 +1,3 @@
 ---
-- name: "notify filebeat for restart"
-  service: name=filebeat state=restarted enabled=yes
-
 - name: "notify logstash for restart"
   service: name=logstash state=restarted enabled=yes

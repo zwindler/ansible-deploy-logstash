@@ -13,3 +13,4 @@
   yum:
     name: logstash
     state: latest
+  notify: "notify logstash for restart"
