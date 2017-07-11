@@ -1,8 +1,8 @@
 ---
-- name: Add Logstash repository
+- name: Add Elasticsearch repository
   yum_repository:
-    name: logstash-5.x
-    description: Logstash repository for 5.x packages
+    name: elasticsearch-5.x
+    description: Elasticsearch repository for 5.x packages
     baseurl: https://artifacts.elastic.co/packages/5.x/yum
     gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
 - name: Add Elasticsearch key to keystore
