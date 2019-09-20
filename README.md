@@ -1,2 +1,2 @@
 # ansible-deploy-logstash
-Ansible role to install of logstash (the official ansible role install legacy 2.X) 
+Archived => official github now support latests versions https://github.com/elastic/ansible-elasticsearch
